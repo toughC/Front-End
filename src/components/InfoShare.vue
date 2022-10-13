@@ -1,26 +1,38 @@
 <template>
-    <div>
-        InfoShare
-    </div>
-  </template>
+  <div class="info-title">
+    해운대구 위치 아이콘
+    <MapIcon/>
+  </div>
+  <div>
+    정보 공유 스위치
+  </div>
+  <div>
+    이것은 행사 이름입니다 (지금당장!)
+  </div>
+  <div>
+    위치 지도
+  </div>
+  <div>
+    관련 내용입니다
+  </div>
+</template>
   
-  <script>
-  
-  export default {
-    name: 'InfoShare',
-    data() {
-        return {
+<script>
+export default {
+  name: 'InfoShare',
+  data() {
+    return {
 
-        }
-    },
-    components: {
-        
     }
+  },
+  components: {
+    MapIcon
   }
-  </script>
+}
+</script>
   
-  <style>
-  
-  </style>
+<style>
+  @import '../css/Info.css';
+</style>
   
   

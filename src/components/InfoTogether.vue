@@ -1,7 +1,6 @@
 <template>
-    <div>
-        InfoTogether
-    </div>
+
+<div>InfoTogether</div>
   </template>
   
   <script>
