@@ -1,6 +1,7 @@
 <template>
+  <BottomNav></BottomNav>
+  
   <div id="map">
-    <BottomNav></BottomNav>
   </div>
 </template>
   
