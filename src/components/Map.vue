@@ -1,6 +1,6 @@
 <template>
   <BottomNav></BottomNav>
-  
+
   <div id="map">
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
       // script 태그 객체 생성
       const script = document.createElement("script");
       // src 속성을 추가하며 .env.local에 등록한 service 키 활용
-      script.src = '//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=b88b3479010b6ac898d720fce45a3927';
+      script.src = '//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=	403841fc6ce405f4d15772e3fb808956';
 
       // javascript를 통해서 script를 로딩 시켰으므로, 로딩 완료에 대한 감지도 역시 javascript를 통해서 이뤄져야 함
       // 로딩 완료 시점을 파악하기 위해 load 이벤트 사용
@@ -57,8 +57,8 @@ export default {
       if (this.map == null) {
         const container = document.getElementById("map");
         const options = {
-          center: new kakao.maps.LatLng(35.14932, 129.11462, 16),
-          level: 6,
+          center: new kakao.maps.LatLng(35.168923, 129.134230, 16),
+          level: 4,
         };
 
 
