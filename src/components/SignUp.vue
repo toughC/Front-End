@@ -1,5 +1,5 @@
 <template>
-  <div class="body">
+  <div class="body-sign">
     <div class="main-title">
         <h1>부산시 문화예술 지도</h1>
     </div>
@@ -56,7 +56,7 @@
   
   <style>
 
-  .body{
+  .body-sign{
     place-items:center;
     display:grid;
     min-height: 100vh;
