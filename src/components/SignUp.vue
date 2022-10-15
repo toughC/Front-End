@@ -14,7 +14,7 @@
             <Input class="login" type="text" v-model="value" placeholder="비밀번호">
             </Input>
           </FormItem>
-          <button class="login-button">
+          <button class="login-button" @click="goMap">
             로그인
           </button>
         </form>
@@ -22,7 +22,7 @@
       <br />
       <div class="regi">
         계정이 없으신가요?
-        <div class="register">회원가입</div>
+        <div class="register" @click="goRegister">회원가입</div>
       </div>
       <div class="find-pw">
         비밀번호 찾기
@@ -39,6 +39,14 @@
         return {
 
         }
+    },
+    methods:{
+      goRegister(){
+        this.$router.push("/register");
+      },
+      goMap(){
+        this.$router.push("/Map");
+      }
     },
     components: {
         
