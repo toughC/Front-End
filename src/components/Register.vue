@@ -138,7 +138,6 @@
   .body-regi span{
     vertical-align: middle;
     color:#4B4B4B;
-    width:100%;
     overflow: visible;
   }
 
@@ -156,7 +155,7 @@
 }
 
 .checkbox-round:checked {
-    background-color: #2F3F67;
+    background-color: #E37A39;
 }
 
 .input-id{
