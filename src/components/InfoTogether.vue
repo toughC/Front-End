@@ -31,11 +31,12 @@
       <hr />
     </div>
   </div>
+  <BottomNav/>
 </template>
   
 
 <script>
-
+import BottomNav from "./BottomNav.vue";
 export default {
   name: 'InfoTogether',
   data() {
@@ -44,7 +45,7 @@ export default {
     }
   },
   components: {
-
+    BottomNav: BottomNav,
   }
 }
 </script>

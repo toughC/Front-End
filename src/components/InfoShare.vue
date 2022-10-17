@@ -29,13 +29,12 @@
       </div>
       <hr />
     </div>
-    <BottomNav/>
   </div>
+  <BottomNav/>
 </template>
   
 <script>
 import BottomNav from "./BottomNav.vue";
-
 export default {
   name: 'InfoShare',
   data() {
