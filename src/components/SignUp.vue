@@ -113,6 +113,8 @@
   .register{
     color:rgb(243, 115, 33);
     font-weight: 600;
+    margin-left: 10px;
+    text-decoration-line: underline;
   }
   </style>
   
