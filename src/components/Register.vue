@@ -4,7 +4,22 @@
         <h1 style="margin-top:0px">회원가입</h1>
         <label class="check-body" v-for="checkboxes in 3" :key="checkboxes">
           <Input class="checkbox-round" type="checkbox" />
-          <span>{{checkList[checkboxes-1]}}</span>
+          <span>
+            <button class="modal-button" @click="clickKey = checkboxes-1, console.log(clickKey), isModalViewed=true">
+              {{checkList[checkboxes-1]}}
+            </button>
+          </span>
+          <ModalView v-if="isModalViewed && clickKey == checkboxes-1" @close-modal="isModalViewed = false">
+            <div v-if="clickKey == 0">
+              <PersonalDataAgree />
+            </div>
+            <div v-if="clickKey == 1">
+              <LocationAgree />
+            </div>
+            <div v-if="clickKey == 2">
+              <ADAgree />
+            </div>
+          </ModalView>
         </label>
 
         <div class="input-id">
@@ -52,14 +67,24 @@
   </template>
   
   <script>
-  
+
+  import ModalView from "./ModalView.vue";
+  import ADAgree from "./ADAgree.vue";
+import PersonalDataAgree from "./PersonalDataAgree.vue";
+import LocationAgree from "./LocationAgree.vue";
+
   export default {
     name: 'Register',
     data() {
         return {
           checkList : ['개인정보 수집 및 이용 동의', '위치 정보 수집 동의', '광고성 수신 동의'],
-          validate: false
+          validate: false,
+          clickKey: 0,
+          isModalViewed: false,
         }
+    },
+    computed: {
+      console: () => console,
     },
     methods:{
       validateCheck(){
@@ -70,14 +95,21 @@
       }
     },
     components: {
-        
-    }
+    ModalView,
+    ADAgree,
+    PersonalDataAgree,
+    LocationAgree
+}
   }
   </script>
   
   <style>
+  @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
   @media(min-width:1200px){
       .body-regi{
+        font-family: 'Noto Sans KR';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
       width:300px;
       position: absolute;
       left:39vw;
@@ -88,6 +120,9 @@
 
   @media(min-width:576px) and (max-width:1199px){
       .body-regi{
+        font-family: 'Noto Sans KR';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
       width:300px;
       position: absolute;
       left:28vw;
@@ -98,6 +133,9 @@
 
   @media (min-width: 768px) and (max-width: 991px) {
     .body-regi{
+      font-family: 'Noto Sans KR';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
       width:300px;
       position: absolute;
       left:10vw;
@@ -106,8 +144,11 @@
     } 
   }
 
-  @media(min-width:376px) and (max-width: 575px){
+  @media(min-width:377px) and (max-width: 575px){
     .body-regi{
+      font-family: 'Noto Sans KR';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
       width:300px;
       position: absolute;
       left:10vw;
@@ -116,11 +157,11 @@
     }
   }
 
-  @media(max-width: 375px){
+  @media(max-width: 376px){
     .body-regi{
       width:300px;
       position: absolute;
-      left:13vw;
+      left:14vw;
       top:100px;
       padding-bottom:100px;
     }
@@ -152,6 +193,11 @@
     -webkit-appearance: none;
     outline: none;
     cursor: pointer;
+}
+
+.modal-button{
+  border: 0px;
+  background:white;
 }
 
 .checkbox-round:checked {
