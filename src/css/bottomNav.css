@@ -5,7 +5,7 @@
 
 .bottom-nav-container {
     z-index: 9999;
-    position: absolute;
+    position: fixed;
 
     width: 95%;
     height: 80px;

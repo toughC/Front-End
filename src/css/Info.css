@@ -1,21 +1,43 @@
+.info-display{
+    width: 100%;
+    margin:auto;
+}
+
 .info-title{
+    height: 3rem;
     text-align: center;
-    align-items: center;
     font-size: 25px;
-    top: 0;
-    bottom: 0;
-    margin: auto;
     padding: auto;
-    margin-bottom: 20px;
+    margin-top: 1rem;
 }
 .info-map-icon{
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height:50px;
     background-color: #E37A39;
     display: inline-block;
     float: right;
     border-radius: 10px;
     text-align: center;
+    margin-right: 5%;
+}
+.info-card{
+    width: 90%;
+    margin:auto;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+.toget-button{
+    background-color: #E37A39;
+    border: 1px solid  #E37A39;
+    border-radius: 15px;
+    width: 100px;
+    height:20px;
+    text-align: center;
+    display: inline-block;
+    float: right;
+    margin-right: 20px;
+    padding-top: auto;
+    padding-bottom: auto;
 }
 .switch-text{
     font-size: 20px;
@@ -32,17 +54,19 @@
     text-align: center;
     float: right;
     margin-right: 20px;
+    padding-bottom: 5px;
 }
 .info-map{
-    width: 90%;
+    width: 100%;
     height: 250px;
-    background-color: aliceblue;
+    background-color: #D9D9D9;
     margin: auto;
 }
 
 .switch-button {
     position: relative;
     display: inline-block;
+    margin-left: 5%;
     width: 55px;
     height: 30px;
 }
