@@ -7,11 +7,11 @@
       <div>
         <form class="login-item">
           <FormItem>
-            <Input class="login" type="text" v-model="value" placeholder="아이디">
+            <Input class="login" type="text" v-model="value" placeholder="아이디" @input="id = $event.target.value">
             </Input>
           </FormItem>
           <FormItem>
-            <Input class="login" type="text" v-model="value" placeholder="비밀번호">
+            <Input class="login" type="text" v-model="value" placeholder="비밀번호" @input="pw = $event.target.value">
             </Input>
           </FormItem>
           <button class="login-button" @click="goMap">
@@ -37,7 +37,9 @@
     name: 'SignUp',
     data() {
         return {
-
+          id:'',
+          pw:'',
+          check: '',
         }
     },
     methods:{
@@ -45,12 +47,17 @@
         this.$router.push("/register");
       },
       goMap(){
-        this.$router.push("/Map");
+        if(this.id == 'admin' && this.pw == '1234'){
+          this.$router.push("/Map");
+          this.check = true;
+        }else{
+          this.check = false;
+          alert('유효하지 않은 아이디 입니다.')
+        }
       }
     },
     components: {
-        
-    }
+}
   }
   </script>
   

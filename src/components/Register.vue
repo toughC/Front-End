@@ -70,8 +70,8 @@
 
   import ModalView from "./ModalView.vue";
   import ADAgree from "./ADAgree.vue";
-import PersonalDataAgree from "./PersonalDataAgree.vue";
-import LocationAgree from "./LocationAgree.vue";
+  import PersonalDataAgree from "./PersonalDataAgree.vue";
+  import LocationAgree from "./LocationAgree.vue";
 
   export default {
     name: 'Register',
