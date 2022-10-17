@@ -2,6 +2,25 @@
   <BottomNav></BottomNav>
 
   <div id="map">
+    <div class="map-category">
+      <ul>
+        <li v-for="i in cultureData" :key="i">
+          <div class="map-category-flex">
+            <div class="map-category-circle map-category-item" :class="{ 
+             'map-category-circle-red' : i.color == 'red',
+             'map-category-circle-blue' : i.color == 'blue',
+             'map-category-circle-green' : i.color == 'green',
+             'map-category-circle-yellow' : i.color == 'yellow'
+            }">
+            </div>
+            <div class="map-category-item">
+              {{ i.name }}
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    
   </div>
 </template>
   
@@ -12,7 +31,24 @@ export default {
   name: 'Map',
   data() {
     return {
-
+      cultureData: [
+        {
+          name: "뮤지컬",
+          color: 'red'
+        },
+        {
+          name: "연극",
+          color: 'blue'
+        },
+        {
+          name: "공연·전시",
+          color: 'green'
+        },
+        {
+          name: "콘서트",
+          color: 'yellow'
+        },
+      ]
     }
   },
   components: {
@@ -74,4 +110,3 @@ export default {
 <style>
 @import "../css/map.css";
 </style>
-  
