@@ -1,37 +1,56 @@
 <template>
+  <div class="post-title">
+    정보작성
+    <hr />
+  </div>
+  <div class="post-display">
     <div>
-        해운대구 위치 아이콘
+      행사제목
+      <Input class="post-input"></Input>
     </div>
+    <div style="margin-bottom:4%">
+      위치
+      <div>
+        <Input class="map-input"></Input>
+        <div class="post-map-icon">
+          <img :src="require('@/img/now_position_icon.svg')" style="width: 38px; height: 38px; padding-top: 5px;" />
+        </div>
+      </div>
+    </div>
+    
     <div>
-      정보 공유 스위치
+      <div class="date-select-button">지금당장</div>
+      <div class="date-select-button">어제 갔다왔음</div>
+      <div class="date-select-button">오늘 하더라</div>
+      <div class="date-select-button">내일도 한대</div>
     </div>
-    <div>
-      이것은 행사 이름입니다 (지금당장!)
-    </div>
-    <div>
-      위치 지도
-    </div>
-    <div>
-      관련 내용입니다
-    </div>
-  </template>
-  
-  <script>
-  
-  export default {
-    name: 'InfoPost',
-    data() {
-        return {
 
-        }
-    },
-    components: {
-        
+    <div style="margin-top: 10%;">
+      <label>내용</label>
+    <Input class="post-input-box"></Input>
+    </div>
+    <div class="final-btn" style="margin:auto">
+      <button class="final-button" @click="goSignUp">작성 완료</button>
+    </div>
+  </div>
+</template>
+  
+<script>
+
+export default {
+  name: 'InfoPost',
+  data() {
+    return {
+
     }
+  },
+  components: {
+
   }
-  </script>
+}
+</script>
   
-  <style>
-  
-  </style>
+<style>
+@import '../css/Info.css';
+</style>
   
