@@ -20,7 +20,11 @@
         </li>
       </ul>
     </div>
+
+    <div v-if="testModal == true" class="map-marker-click-modal">
     
+    </div>
+
   </div>
 </template>
   
@@ -31,6 +35,7 @@ export default {
   name: 'Map',
   data() {
     return {
+      // 문화 데이터 4개
       cultureData: [
         {
           name: "뮤지컬",
@@ -48,7 +53,9 @@ export default {
           name: "콘서트",
           color: 'yellow'
         },
-      ]
+      ],
+      // 모달창 오픈 여부
+      testModal: true,
     }
   },
   components: {
@@ -71,13 +78,6 @@ export default {
 
       /* global kakao */
       script.onload = () => kakao.maps.load(this.initMap);
-
-
-      // script.addEventListener("load", () => {
-      //   kakao.maps.load(this.initMap);
-      //   // console.log("loaded", window.kakao);
-      // });
-
       // document의 head에 script 추가
       document.head.appendChild(script);
     }
@@ -97,9 +97,29 @@ export default {
           level: 4,
         };
 
-
         this.map = new kakao.maps.Map(container, options);
       }
+
+      var testMarkerPosition = new kakao.maps.LatLng(35.169020, 129.134772);
+
+      // 마커를 생성합니다
+      var testMarker = new kakao.maps.Marker({
+        position: testMarkerPosition,
+        clickable: true,
+      });
+
+      // 마커가 지도 위에 표시되도록 설정합니다
+      testMarker.setMap(this.map);
+
+      kakao.maps.event.addListener(testMarker, 'click', () => {
+        if(!this.testModal) {
+          this.testModal = true;
+        }
+        else {
+          this.testModal = false;
+        }
+        
+      });
 
       console.log("맵을 불러왔어!");
     },
