@@ -8,8 +8,10 @@
       행사제목
       <Input class="post-input"></Input>
     </div>
-    <div style="margin-bottom:4%">
-      위치
+    <div>
+      <div class="post-label">
+        위치
+      </div>
       <div>
         <Input class="map-input"></Input>
         <div class="post-map-icon">
@@ -17,8 +19,8 @@
         </div>
       </div>
     </div>
-    
-    <div>
+
+    <div class="post-btn-group">
       <div class="date-select-button">지금당장</div>
       <div class="date-select-button">어제 갔다왔음</div>
       <div class="date-select-button">오늘 하더라</div>
@@ -26,8 +28,8 @@
     </div>
 
     <div style="margin-top: 10%;">
-      <label>내용</label>
-    <Input class="post-input-box"></Input>
+      <label class="post-label">내용</label>
+      <Input class="post-input-box"></Input>
     </div>
     <div class="final-btn" style="margin:auto">
       <button class="final-button" @click="goSignUp">작성 완료</button>
