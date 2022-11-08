@@ -10,7 +10,7 @@
             </button>
           </span>
           <ModalView v-if="isModalViewed && clickKey == checkboxes-1" @close-modal="isModalViewed = false">
-            <div v-if="clickKey == 0">
+            <div v-if="clickKey == 0" class="modal-scroll">
               <PersonalDataAgree />
             </div>
             <div v-if="clickKey == 1">
@@ -259,6 +259,10 @@
   padding-top:13px;
   padding-bottom:13px;
   width:100%;
+}
+
+.modal-scroll{
+overflow-y: auto;
 }
   </style>
   

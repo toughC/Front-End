@@ -3,8 +3,8 @@
 
   <div id="map">
     <div class="map-category">
-      <ul>
-        <li v-for="i in cultureData" :key="i">
+      <ul class="map-list-style-ul">
+        <li v-for="i in cultureData" :key="i" class="map-list-style-li">
           <div class="map-category-flex">
             <div class="map-category-circle map-category-item" :class="{ 
              'map-category-circle-red' : i.color == 'red',
@@ -21,8 +21,34 @@
       </ul>
     </div>
 
-    <div v-if="testModal == true" class="map-marker-click-modal">
     
+    <div v-if="testModal == true" class="map-marker-click-modal">
+      <div class="map-marker-click-modal-list-container">
+        <div v-for="i in 10" :key="i">
+          <!-- 사진 -->
+          <div class="map-marker-click-modal-list-pic">
+
+          </div>
+
+          <!-- 사진 옆에 내용 -->
+          <div class="map-marker-click-modal-list-main">
+            <!-- 카테고리 -->
+            <div class="map-marker-click-modal-list-main-category">
+
+            </div>
+            <!-- 제목, 일시 -->
+            <div class="map-marker-click-modal-list-main-content">
+              <div>
+                <h1>어쩌구저쩌구제목입니다</h1>
+              </div>
+              <div>
+                <h4>일시</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
   </div>
@@ -112,13 +138,13 @@ export default {
       testMarker.setMap(this.map);
 
       kakao.maps.event.addListener(testMarker, 'click', () => {
-        if(!this.testModal) {
+        if (!this.testModal) {
           this.testModal = true;
         }
         else {
           this.testModal = false;
         }
-        
+
       });
 
       console.log("맵을 불러왔어!");
