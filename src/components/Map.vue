@@ -23,15 +23,15 @@
 
     
     <div v-if="testModal == true" class="map-marker-click-modal">
-      <div class="map-marker-click-modal-list-container">
-        <div v-for="i in 10" :key="i">
+      <div class="map-marker-click-modal-list-container container text-center">
+        <div v-for="i in 10" :key="i" class="row">
           <!-- 사진 -->
-          <div class="map-marker-click-modal-list-pic">
+          <div class="map-marker-click-modal-list-pic col-4">
 
           </div>
 
           <!-- 사진 옆에 내용 -->
-          <div class="map-marker-click-modal-list-main">
+          <div class="map-marker-click-modal-list-main col-6">
             <!-- 카테고리 -->
             <div class="map-marker-click-modal-list-main-category">
 
@@ -46,6 +46,7 @@
               </div>
             </div>
           </div>
+          
         </div>
 
       </div>
@@ -81,7 +82,7 @@ export default {
         },
       ],
       // 모달창 오픈 여부
-      testModal: true,
+      testModal: false,
     }
   },
   components: {
