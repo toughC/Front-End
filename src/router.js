@@ -7,6 +7,7 @@ import InfoShare from '@/components/InfoShare.vue';
 import InfoPost from '@/components/InfoPost.vue';
 import InfoTogether from '@/components/InfoTogether.vue';
 import MyPage from '@/components/MyPage.vue';
+import Info from '@/components/Info.vue';
 
 const routes = [
     {
@@ -28,6 +29,10 @@ const routes = [
     {
       path: "/map/detail/:id",
       component: Detail,
+    },
+    {
+      path: "/info",
+      component: Info,
     },
     {
       path: "/info/share",
