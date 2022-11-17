@@ -49,6 +49,14 @@
           
         </div>
 
+        <button @click="request">
+          이걸 눌러봐!
+        </button>
+
+        <div>
+            {{responseData}}
+        </div>
+
       </div>
     </div>
 
@@ -57,6 +65,7 @@
   
 <script>
 import BottomNav from "./BottomNav.vue";
+import axios from 'axios';
 
 export default {
   name: 'Map',
@@ -83,6 +92,7 @@ export default {
       ],
       // 모달창 오픈 여부
       testModal: false,
+      responseData: "",
     }
   },
   components: {
@@ -150,6 +160,15 @@ export default {
 
       console.log("맵을 불러왔어!");
     },
+    request() {
+      axios.get('/api/test').then((response) => {
+        this.responseData = response.data;
+        console.log("데이터를 받아왔어!");
+      }).catch(err => {
+        alert(err);
+        console.log(err);
+      });
+    }
   }
 }
 </script>
