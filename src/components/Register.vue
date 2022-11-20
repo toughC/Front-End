@@ -1,4 +1,5 @@
 <template>
+  <div>
   <div class="wrapper">
     <div class="body-regi">
         <h1 style="margin-top:0px">회원가입</h1>
@@ -23,47 +24,48 @@
         </label>
 
         <div class="input-id">
-          <label>아이디</label>
+          <label for="Rid">아이디</label>
           <Form style="margin-top:10px">
-            <Input class="input-blank"></Input>
-            <button class="input-button" @click="validateCheck">중복확인</button>
-            <div class="validate-check" v-if="validate == true">사용할 수 있는 아이디 입니다.</div>
-            <div class="validate-check" v-if="validate == false">사용할 수 없는 아이디 입니다.</div>
+            <Input class="input-blank" type="text" v-model="value" @input="state.form.Rid = $event.target.value"></Input>
+            <span class="input-button" @click="validateCheck">중복확인</span>
+            <div class="validate-check" v-if="state.validate === true">사용할 수 있는 아이디 입니다.</div>
+            <div class="validate-check" v-if="state.validate === false">사용할 수 없는 아이디 입니다.</div>
           </Form>
         </div>
         <div class="input-pw">
           <br/>
-          <label>비밀번호</label>
+          <label for="Rpw">비밀번호</label>
           <Form style="margin-top:10px">
-            <Input class="input-blank-pw"></Input>
+            <Input type="text" class="input-blank-pw" v-model="value" @input="state.form.Rpw = $event.target.value"></Input>
           </Form>
         </div>
         <div class="input-pw">
           <br/>
           <label>비밀번호 확인</label>
           <Form style="margin-top:10px">
-            <Input class="input-blank-pw"></Input>
+            <Input class="input-blank-pw" @input="pwCheck = $event.target.value"></Input>
           </Form>
         </div>
         <div class="input-id">
-          <label>휴대폰 번호</label>
+          <label for="Rphone">휴대폰 번호</label>
           <Form style="margin-top:10px">
-            <Input class="input-blank"></Input>
+            <Input type="text" class="input-blank" id="Rphone" v-model="value" @input="state.form.Rphone = $event.target.value"></Input>
             <button class="input-button">인증요청</button>
           </Form>
         </div>
         <div class="input-id">
           <label>인증번호 입력</label>
           <Form>
-            <Input class="input-blank"></Input>
+            <Input class="input-blank" @input="cert = $event.target.value"></Input>
             <button class="input-button" style="width:74px">확인</button>
           </Form>
         </div>
         <div class="final-btn">
-          <button class="final-button" @click="goSignUp">가입 완료</button>
+          <button class="final-button" @click="submit">가입 완료</button>
         </div>
     </div>
   </div>
+</div>
   </template>
   
   <script>
@@ -72,9 +74,64 @@
   import ADAgree from "./ADAgree.vue";
   import PersonalDataAgree from "./PersonalDataAgree.vue";
   import LocationAgree from "./LocationAgree.vue";
+  import {reactive} from "vue"; 
+  import axios from "axios";
 
   export default {
-    name: 'Register',
+    name: 'Register', 
+    setup(){
+      const state = reactive({
+        loggedIn:false,
+        account:{
+          mid: null,
+          memberName: "",
+        },
+        form:{
+          Rid: "",
+          Rpw: "",
+          Rphone: "",
+        },
+        validate: "true",
+      });
+      console.log(state.form.Rid);
+      axios.get("/api/register").then((res) => {
+        console.log(res);
+      })
+
+      const submit = () => {
+        const args = {
+          Rid : state.form.Rid,
+          Rpw : state.form.Rpw,
+          Rphone : state.form.Rphone,
+        };
+        axios.post("/api/register", args).then((res) => {
+          console.log(res);
+        });
+      };
+      
+      const validateCheck = () => {
+        const args = {
+          Rid : state.form.Rid,
+        };
+        axios.post("/api/check", args).then((res)=>{
+          console.log(res.data);
+          for(var i=0; i<res.data.length; i++){
+            const Rid = state.form.Rid
+            console.log(res.data[i].id)
+            if(Rid === res.data[i].id){
+              console.log(Rid, res.data[i].id)
+              state.validate = false;
+              break;
+            }else{
+              console.log(Rid, res.data[i].id)
+              state.validate = true;
+              console.log(state.validate)
+            }
+          }
+        });
+      };
+      return {state, submit, validateCheck}
+    },
     data() {
         return {
           checkList : ['개인정보 수집 및 이용 동의', '위치 정보 수집 동의', '광고성 수신 동의'],
@@ -87,9 +144,6 @@
       console: () => console,
     },
     methods:{
-      validateCheck(){
-        this.validate = true;
-      },
       goSignUp(){
         this.$router.push('/')
       }
@@ -178,7 +232,7 @@
 
   .body-regi span{
     vertical-align: middle;
-    color:#4B4B4B;
+    color:white;
     overflow: visible;
   }
 
@@ -222,8 +276,8 @@
   border-radius: 30px;
   padding:10px;
   margin-left: 1%;
-  background: #E37A39;
   color: white;
+  background: #E37A39;
 }
 
 .validate-check{
