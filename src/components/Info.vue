@@ -7,10 +7,11 @@
     </div>
     <div style="margin-bottom:20px">
       <label class="switch-button">
-        <input type="checkbox"  @click="infoshare=false"/>
+        <input type="checkbox"  @click="infoshare=!infoshare"/>
         <span class="onoff-switch"></span>
       </label>
-      <span class="switch-text">정보공유</span>
+        <span v-if="infoshare" class="switch-text">정보공유</span>
+        <span v-if="!infoshare" class="switch-text">같이고고</span>
     </div>
   <div v-if="infoshare"><Infoshare/></div>
   <div v-else><InfoTogether/></div>
