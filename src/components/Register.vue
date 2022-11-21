@@ -36,14 +36,16 @@
           <br/>
           <label for="Rpw">비밀번호</label>
           <Form style="margin-top:10px">
-            <Input type="text" class="input-blank-pw" v-model="value" @input="state.form.Rpw = $event.target.value"></Input>
+            <Input type="text" class="input-blank-pw" v-model="value" @input="state.form.Rpw = $event.target.value, console.log(state.form.Rpw)"></Input>
           </Form>
         </div>
         <div class="input-pw">
           <br/>
           <label>비밀번호 확인</label>
           <Form style="margin-top:10px">
-            <Input class="input-blank-pw" @input="pwCheck = $event.target.value"></Input>
+            <Input type="text" class="input-blank-pw" v-model="value" @input="state.form.RpwCheck = $event.target.value, console.log(state.form.RpwCheck)">{{Equalcheck()}}</Input>
+            <div class="validate-check" v-if="state.pwEqCheck === true">비밀번호가 일치합니다.</div>
+            <div class="validate-check" v-if="state.pwEqCheck === false">비밀번호가 일치하지 않습니다.</div>
           </Form>
         </div>
         <div class="input-id">
@@ -61,7 +63,8 @@
           </Form>
         </div>
         <div class="final-btn">
-          <button class="final-button" @click="submit">가입 완료</button>
+          <button v-if="state.validate === true && state.pwEqCheck === true" class="final-button" @click="submit">가입 완료</button>
+          <button v-else disabled="true" class="final-button" @click="submit">가입 완료</button>
         </div>
     </div>
   </div>
@@ -89,9 +92,12 @@
         form:{
           Rid: "",
           Rpw: "",
+          RpwCheck: "",
           Rphone: "",
         },
         validate: "true",
+        pwValidate : "true",
+        pwEqCheck : "false",
       });
       console.log(state.form.Rid);
       axios.get("/api/register").then((res) => {
@@ -130,14 +136,23 @@
           }
         });
       };
-      return {state, submit, validateCheck}
+
+      const Equalcheck = () => {
+        if(state.form.Rpw === state.form.RpwCheck){
+          state.pwEqCheck = true;
+        }else{
+          state.pwEqCheck = false;
+        }
+      }
+
+      return {state, submit, validateCheck, Equalcheck}
     },
     data() {
         return {
           checkList : ['개인정보 수집 및 이용 동의', '위치 정보 수집 동의', '광고성 수신 동의'],
           validate: false,
           clickKey: 0,
-          isModalViewed: false,
+          isModalViewed: false,         
         }
     },
     computed: {
@@ -146,7 +161,7 @@
     methods:{
       goSignUp(){
         this.$router.push('/')
-      }
+      },
     },
     components: {
     ModalView,
