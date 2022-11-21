@@ -14,15 +14,19 @@
             <Input class="login" type="text" v-model="value" placeholder="비밀번호" @input="pw = $event.target.value">
             </Input>
           </FormItem>
-          <button class="login-button" @click="goMap">
+          <button class="login-button" @click="goMap" v-if="state.loggedIn === true">
+            로그인
+          </button>
+          <button class="login-button" @click="goMap" v-if="state.loggedIn === false" disabled="true">
             로그인
           </button>
         </form>
       </div>
       <br />
+      <div class="find-pw" style="color: rgb(243, 115, 33); font-size:13px" v-if="state.loggedIn === false">유효하지 않은 아이디 입니다.</div>
       <div class="regi">
         계정이 없으신가요?
-        <div class="register" @click="goRegister">회원가입</div>
+        <div class="register"  @click="goRegister">회원가입</div>
       </div>
       <div class="find-pw">
         비밀번호 찾기
@@ -32,8 +36,16 @@
 </template>
   
   <script>
-  
+  import {reactive} from "vue";
+
   export default {
+    setup(){
+      const state = reactive({
+        loggedIn:false
+      });
+
+      return { state };
+    },
     name: 'SignUp',
     data() {
         return {
